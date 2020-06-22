@@ -33,24 +33,17 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9bE-JA-nSk">
                                 <rect key="frame" x="0.0" y="100" width="375" height="567"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eeS-wK-GnT">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="21"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="fikirCell" rowHeight="100" id="d5a-hA-Bb1">
-                                        <rect key="frame" x="0.0" y="49" width="375" height="100"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="fikirCell" rowHeight="100" id="d5a-hA-Bb1" customClass="FikirCell" customModule="tatlisozluk" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="d5a-hA-Bb1" id="YYm-hT-8YY">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kullanıcı Adı :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9LZ-4I-Eub">
-                                                    <rect key="frame" x="15" y="11" width="101" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="15" y="11" width="109.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -61,7 +54,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tarih" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6U-Z7-ycK">
-                                                    <rect key="frame" x="128" y="11" width="37.5" height="20.5"/>
+                                                    <rect key="frame" x="136.5" y="11" width="37.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -94,6 +87,13 @@
                                                 <constraint firstItem="Vf1-TO-MmA" firstAttribute="leading" secondItem="YYm-hT-8YY" secondAttribute="leadingMargin" id="sjw-Vg-qaf"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="imgBegeni" destination="X4W-df-mna" id="0Pi-b1-VF5"/>
+                                            <outlet property="lblBegeni" destination="1uX-zK-L97" id="O08-DE-JiG"/>
+                                            <outlet property="lblKullaniciadi" destination="9LZ-4I-Eub" id="xKN-Ba-bKR"/>
+                                            <outlet property="lblTarih" destination="b6U-Z7-ycK" id="lV1-nP-hK0"/>
+                                            <outlet property="lblYorum" destination="AGF-vE-Pfp" id="WR9-dX-VvR"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

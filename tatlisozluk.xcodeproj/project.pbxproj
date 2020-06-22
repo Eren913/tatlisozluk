@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		220E796F249FFB5F00E2BE2F /* Fikir.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220E796E249FFB5F00E2BE2F /* Fikir.swift */; };
+		220E797124A0229D00E2BE2F /* FikirCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220E797024A0229D00E2BE2F /* FikirCell.swift */; };
 		2269F9F0249FEF4E00D73E64 /* Kategoriler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2269F9EF249FEF4E00D73E64 /* Kategoriler.swift */; };
 		2269F9F3249FF0FF00D73E64 /* Sabitler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2269F9F2249FF0FF00D73E64 /* Sabitler.swift */; };
 		22AFACB0249FDF3F004C898B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AFACAF249FDF3F004C898B /* AppDelegate.swift */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		220E796E249FFB5F00E2BE2F /* Fikir.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fikir.swift; sourceTree = "<group>"; };
+		220E797024A0229D00E2BE2F /* FikirCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FikirCell.swift; sourceTree = "<group>"; };
 		2269F9EF249FEF4E00D73E64 /* Kategoriler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kategoriler.swift; sourceTree = "<group>"; };
 		2269F9F2249FF0FF00D73E64 /* Sabitler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sabitler.swift; sourceTree = "<group>"; };
 		22AFACAC249FDF3F004C898B /* tatlisozluk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tatlisozluk.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,6 +119,7 @@
 		22ED2041249FE5A20004E91A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				220E797024A0229D00E2BE2F /* FikirCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				22AFACB4249FDF3F004C898B /* Anafikir.swift in Sources */,
 				22AFACB0249FDF3F004C898B /* AppDelegate.swift in Sources */,
 				22AFACB2249FDF3F004C898B /* SceneDelegate.swift in Sources */,
+				220E797124A0229D00E2BE2F /* FikirCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

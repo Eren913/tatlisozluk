@@ -16,44 +16,73 @@ class Anafikir: UIViewController {
     
     private var fikirler = [Fikir]()
     var fireStoreRef : CollectionReference!
+    private var secilenKategori = Kategoriler.Eglence.rawValue
+    private var fikirListener : ListenerRegistration!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.estimatedRowHeight = 80
-        tableView.rowHeight = UITableView.automaticDimension
         
         fireStoreRef = Firestore.firestore().collection(Fikirler_REF)
         
     }
+    
     override func viewWillAppear(_ animated: Bool) {
-        fireStoreRef.getDocuments { (snapshot, error) in
-            if let error = error{
-                debugPrint("Hata\(error.localizedDescription)")
-            }else{
-                
-                guard let snap = snapshot else {return}
-                for document in snap.documents {
-                    let data = document.data()
-                    
-                    let kullaniciadi = data[KullaniciAdi_REF] as? String ?? "Misafir"
-                    let yorumsayisi = data[YorumSayısı_REF] as? Int ?? 0
-                    let begenisayisi = data[Begenisayisi_REF] as? Int ?? 0
-                    let fikirtext = data[FikirText_REF] as? String ?? "Fikir yok"
-                    let eklenmetarihi = data[EklenmeTarihi_REF] as? Date ?? Date()
-                    let documentid = document.documentID
-                    
-                    let yeniFikir = Fikir(kullaniciAdi: kullaniciadi, eklenmeTarihi: eklenmetarihi, fikirText: fikirtext, yorumSayisi: yorumsayisi, begeniSayisi: begenisayisi, documentId: documentid)
-                    
-                    self.fikirler.append(yeniFikir)
-                }
+        setListener()
+    }
+    func setListener(){
+        fikirListener = fireStoreRef.whereField(Kategori_REF, isEqualTo: secilenKategori)
+        .addSnapshotListener { (snapshot, error) in
+        if let error = error{
+        debugPrint("Hata\(error.localizedDescription)")
+        }else{
+                           
+        guard let snap = snapshot else {return}
+        self.fikirler.removeAll()
+        for document in snap.documents {
+        let data = document.data()
+        let kullaniciadi = data[KullaniciAdi_REF] as? String ?? "Misafir"
+        let yorumsayisi = data[YorumSayısı_REF] as? Int ?? 0
+        let begenisayisi = data[Begenisayisi_REF] as? Int ?? 0
+        let fikirtext = data[FikirText_REF] as? String ?? "Fikir yok"
+        let eklenmetarihi = data[EklenmeTarihi_REF] as? Date ?? Date()
+        let documentid = document.documentID
+            
+        let yeniFikir = Fikir(kullaniciAdi: kullaniciadi, eklenmeTarihi: eklenmetarihi, fikirText: fikirtext, yorumSayisi: yorumsayisi, begeniSayisi: begenisayisi, documentId: documentid)
+            self.fikirler.append(yeniFikir)
+            }
                 self.tableView.reloadData()
             }
         }
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        fikirListener.remove()
+    }
+    
+    
+    @IBAction func sgmntChanged(_ sender: UISegmentedControl) {
+        switch sgmntKategori.selectedSegmentIndex {
+        case 0:
+            secilenKategori = Kategoriler.Eglence.rawValue
+        case 1 :
+            secilenKategori = Kategoriler.Absurt.rawValue
+        case 2 :
+            secilenKategori = Kategoriler.Gundem.rawValue
+        case 3 :
+            secilenKategori = Kategoriler.Populer.rawValue
+        default:
+            secilenKategori = Kategoriler.Eglence.rawValue
+        }
+        fikirListener.remove()
+        setListener()
+    }
+    
 }
+
+
+
 extension Anafikir : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fikirler.count
@@ -67,8 +96,5 @@ extension Anafikir : UITableViewDelegate,UITableViewDataSource{
         }else{
             return UITableViewCell()
         }
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
     }
 }

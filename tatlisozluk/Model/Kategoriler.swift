@@ -10,7 +10,8 @@ import Foundation
 
 enum Kategoriler : String{
     
-    case Gundem = "Gündem"
+    case Gundem = "Gundem"
     case Eglence = "Eglence"
     case Absurt = "Absurt"
+    case Populer = "Populer"
 }

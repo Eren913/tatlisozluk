@@ -17,9 +17,6 @@
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QNg-OK-A57">
                                 <rect key="frame" x="20" y="59" width="335" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="31" id="ZTd-09-aKJ"/>
-                                </constraints>
                                 <segments>
                                     <segment title="Eğlence"/>
                                     <segment title="Absürt"/>
@@ -28,6 +25,7 @@
                                 </segments>
                                 <connections>
                                     <action selector="kategoridegisti:" destination="Sj1-Dv-U5a" eventType="valueChanged" id="j0s-9z-5Mc"/>
+                                    <action selector="sgmntChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="jtb-gh-rTr"/>
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9bE-JA-nSk">
@@ -47,8 +45,11 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yorum" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AGF-vE-Pfp">
-                                                    <rect key="frame" x="15" y="39.5" width="345" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yorum " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AGF-vE-Pfp">
+                                                    <rect key="frame" x="15" y="39.5" width="345" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="345" id="nlO-Ul-pOo"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -60,13 +61,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Vf1-TO-MmA">
-                                                    <rect key="frame" x="15" y="71" width="68.5" height="20.5"/>
+                                                    <rect key="frame" x="15" y="71.5" width="68.5" height="20"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yildizRenkli" translatesAutoresizingMaskIntoConstraints="NO" id="X4W-df-mna">
-                                                            <rect key="frame" x="0.0" y="0.0" width="20" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1uX-zK-L97">
-                                                            <rect key="frame" x="40" y="0.0" width="28.5" height="20.5"/>
+                                                            <rect key="frame" x="40" y="0.0" width="28.5" height="20"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -75,16 +76,17 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="9LZ-4I-Eub" firstAttribute="top" secondItem="YYm-hT-8YY" secondAttribute="topMargin" id="1lb-vq-34F"/>
-                                                <constraint firstItem="b6U-Z7-ycK" firstAttribute="centerY" secondItem="9LZ-4I-Eub" secondAttribute="centerY" id="3Vg-8c-gQk"/>
-                                                <constraint firstItem="AGF-vE-Pfp" firstAttribute="trailing" secondItem="YYm-hT-8YY" secondAttribute="trailingMargin" id="GOA-da-OOF"/>
-                                                <constraint firstItem="Vf1-TO-MmA" firstAttribute="bottom" secondItem="YYm-hT-8YY" secondAttribute="bottomMargin" constant="2.5" id="H9k-YT-nwf"/>
-                                                <constraint firstItem="AGF-vE-Pfp" firstAttribute="leading" secondItem="9LZ-4I-Eub" secondAttribute="leading" id="LaA-sS-gmG"/>
-                                                <constraint firstItem="b6U-Z7-ycK" firstAttribute="leading" secondItem="9LZ-4I-Eub" secondAttribute="trailing" constant="12" id="RV5-sq-ZlZ"/>
-                                                <constraint firstItem="9LZ-4I-Eub" firstAttribute="leading" secondItem="YYm-hT-8YY" secondAttribute="leadingMargin" id="Rbv-GT-cxN"/>
-                                                <constraint firstItem="AGF-vE-Pfp" firstAttribute="top" secondItem="9LZ-4I-Eub" secondAttribute="bottom" constant="8" id="e0e-KO-rQI"/>
-                                                <constraint firstItem="9LZ-4I-Eub" firstAttribute="leading" secondItem="YYm-hT-8YY" secondAttribute="leading" constant="15" id="k1D-UL-jxS"/>
-                                                <constraint firstItem="Vf1-TO-MmA" firstAttribute="leading" secondItem="YYm-hT-8YY" secondAttribute="leadingMargin" id="sjw-Vg-qaf"/>
+                                                <constraint firstItem="9LZ-4I-Eub" firstAttribute="top" secondItem="YYm-hT-8YY" secondAttribute="topMargin" id="0aj-Yy-a0f"/>
+                                                <constraint firstItem="AGF-vE-Pfp" firstAttribute="centerY" secondItem="YYm-hT-8YY" secondAttribute="centerY" id="DZg-yp-4Ry"/>
+                                                <constraint firstItem="Vf1-TO-MmA" firstAttribute="top" secondItem="AGF-vE-Pfp" secondAttribute="bottom" constant="11" id="Oxg-up-zGj"/>
+                                                <constraint firstItem="9LZ-4I-Eub" firstAttribute="leading" secondItem="YYm-hT-8YY" secondAttribute="leadingMargin" id="Pv2-cp-EVA"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Vf1-TO-MmA" secondAttribute="bottom" constant="-2.5" id="YpB-Xj-DKa"/>
+                                                <constraint firstItem="AGF-vE-Pfp" firstAttribute="leading" secondItem="Vf1-TO-MmA" secondAttribute="leading" id="ejT-AF-5pk"/>
+                                                <constraint firstItem="9LZ-4I-Eub" firstAttribute="leading" secondItem="AGF-vE-Pfp" secondAttribute="leading" id="jFk-lT-zn8"/>
+                                                <constraint firstItem="AGF-vE-Pfp" firstAttribute="top" secondItem="9LZ-4I-Eub" secondAttribute="bottom" constant="8" id="mnG-Ez-L7O"/>
+                                                <constraint firstItem="b6U-Z7-ycK" firstAttribute="baseline" secondItem="9LZ-4I-Eub" secondAttribute="firstBaseline" id="moR-R5-fti"/>
+                                                <constraint firstItem="9LZ-4I-Eub" firstAttribute="baseline" secondItem="b6U-Z7-ycK" secondAttribute="baseline" id="mtL-Df-bu5"/>
+                                                <constraint firstItem="b6U-Z7-ycK" firstAttribute="leading" secondItem="9LZ-4I-Eub" secondAttribute="trailing" constant="12" id="wxV-wa-o9t"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -100,13 +102,13 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QNg-OK-A57" secondAttribute="trailing" constant="20" id="2Ms-aG-rrO"/>
-                            <constraint firstItem="QNg-OK-A57" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="DB2-Em-iEc"/>
-                            <constraint firstItem="9bE-JA-nSk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Mtc-jh-11U"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9bE-JA-nSk" secondAttribute="trailing" id="W8K-qr-Jsp"/>
-                            <constraint firstItem="QNg-OK-A57" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="cgc-6v-iY9"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="9bE-JA-nSk" secondAttribute="bottom" id="kEU-V0-AR6"/>
-                            <constraint firstItem="9bE-JA-nSk" firstAttribute="top" secondItem="QNg-OK-A57" secondAttribute="bottom" constant="10" id="tk2-ii-XV8"/>
+                            <constraint firstItem="QNg-OK-A57" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="7uF-K4-xmJ"/>
+                            <constraint firstItem="9bE-JA-nSk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="M20-IB-oHd"/>
+                            <constraint firstItem="QNg-OK-A57" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="OJA-xW-f33"/>
+                            <constraint firstItem="QNg-OK-A57" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YRM-sA-gOB"/>
+                            <constraint firstItem="9bE-JA-nSk" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ct8-fA-wWT"/>
+                            <constraint firstItem="QNg-OK-A57" firstAttribute="centerX" secondItem="9bE-JA-nSk" secondAttribute="centerX" id="eco-xG-z35"/>
+                            <constraint firstItem="9bE-JA-nSk" firstAttribute="top" secondItem="QNg-OK-A57" secondAttribute="bottom" constant="10" id="nmQ-xl-daE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

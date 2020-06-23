@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import FirebaseAuth
 class GirisVC: UIViewController {
 
     @IBOutlet weak var txtemail: UITextField!
@@ -23,10 +23,18 @@ class GirisVC: UIViewController {
     }
     
     @IBAction func btnSignin(_ sender: UIButton) {
+        
+        guard let email = txtemail.text,
+           let password = txtparlo.text else{return}
+        
+        Auth.auth().signIn(withEmail: email, password: password) { (kullanici, error) in
+            
+            if let error = error{
+                debugPrint(error.localizedDescription)
+            }else{
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+        
     }
-    
-
-    @IBAction func btnSignup(_ sender: UIButton) {
-    }
-    
 }

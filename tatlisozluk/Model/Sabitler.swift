@@ -15,3 +15,8 @@ let Begenisayisi_REF = "BegeniSayısı"
 let FikirText_REF = "FikirText"
 let KullaniciAdi_REF = "KullanıcıAdı"
 let EklenmeTarihi_REF = "EklenmeTarihi"
+
+
+let USER_REF = "Users"
+let USERNAME_REF = "Kullaniciadi"
+let USERCREATETIME_REF = "Olusturma tarihi"

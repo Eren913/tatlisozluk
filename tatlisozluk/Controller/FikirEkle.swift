@@ -38,12 +38,12 @@ class FikirEkle: UIViewController {
             Kategori_REF : secilenKategori,
             Begenisayisi_REF : 0,
             YorumSayısı_REF : 0,
-            FikirText_REF: txtPost.text,
+            FikirText_REF: txtPost.text!,
             EklenmeTarihi_REF : FieldValue.serverTimestamp(),
             KullaniciAdi_REF : kullaniciadi
         ]){ error in
             if let error = error {
-                print("print error")
+                print("print error\(error)")
             }else{
                 self.navigationController?.popViewController(animated: true)
             }

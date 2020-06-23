@@ -18,6 +18,7 @@ class Anafikir: UIViewController {
     var fireStoreRef : CollectionReference!
     private var secilenKategori = Kategoriler.Eglence.rawValue
     private var fikirListener : ListenerRegistration!
+    private var listenerHandle : AuthStateDidChangeListenerHandle?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +29,22 @@ class Anafikir: UIViewController {
         fireStoreRef = Firestore.firestore().collection(Fikirler_REF)
         
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        if fikirListener != nil{
+            fikirListener.remove()
+        }
+       }
     override func viewWillAppear(_ animated: Bool) {
-        setListener()
+        
+        listenerHandle = Auth.auth().addStateDidChangeListener({ (auth, user) in
+            if user == nil{
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let girisVC = storyboard.instantiateViewController(withIdentifier: "girisVC")
+                self.present(girisVC, animated: true, completion: nil)
+            }else{
+                self.setListener()
+            }
+        })
     }
     func setListener(){
         
@@ -59,9 +74,7 @@ class Anafikir: UIViewController {
             }
         }
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        fikirListener.remove()
-    }
+   
     
     
     @IBAction func sgmntChanged(_ sender: UISegmentedControl) {
@@ -81,6 +94,26 @@ class Anafikir: UIViewController {
         setListener()
     }
     
+    @IBAction func SignoutClickec(_ sender: UIBarButtonItem) {
+       
+        do{
+            try Auth.auth().signOut()
+            print("Çıkış işlemi Başarılı")
+        }catch{
+            print("Çıkış işlemi  Hatası")
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "toYorum" {
+            if let destination = segue.destination as? YorumlarVC{
+                if let secilenfikir = sender as? Fikir{
+                    destination.secilenfikir = secilenfikir
+                }
+            }
+        }
+    }
 }
 
 
@@ -98,5 +131,8 @@ extension Anafikir : UITableViewDelegate,UITableViewDataSource{
         }else{
             return UITableViewCell()
         }
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "toYorum", sender: fikirler[indexPath.row])
     }
 }

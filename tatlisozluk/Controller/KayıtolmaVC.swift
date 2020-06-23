@@ -44,10 +44,9 @@ class kayitVC: UIViewController {
            */
             
             guard let userid = users?.user.uid else {return}
-            
-            Firestore.firestore().collection(USER_REF).document(userid).setData([
-                USERNAME_REF : username,
-                USERCREATETIME_REF : FieldValue.serverTimestamp()
+            Firestore.firestore().collection(KULLANICILAR_REF).document(userid).setData([
+                KULLANICI_ADI_REF : username,
+                KULLANICI_OLUSTURMA_TARIHI : FieldValue.serverTimestamp()
                 ],completion: {(error) in
                     if let error = error{
                         print("Kullanıcı Eklenirken hata meydana geldi \(error.localizedDescription)")

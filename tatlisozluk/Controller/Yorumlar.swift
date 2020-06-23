@@ -8,16 +8,18 @@
 
 import UIKit
 
-class YorumlarVC: UIViewController {
+class Yorumlar: UIViewController {
 
     @IBOutlet weak var txtField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     
     var secilenfikir : Fikir!
     var yorumlar = [Yorum]()
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         tableView.dataSource = self
         tableView.delegate = self
     }
@@ -27,7 +29,7 @@ class YorumlarVC: UIViewController {
     }
     
 }
-extension YorumlarVC : UITableViewDelegate,UITableViewDataSource{
+extension Yorumlar : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return yorumlar.count
     }

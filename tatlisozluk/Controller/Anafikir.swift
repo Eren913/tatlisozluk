@@ -106,8 +106,8 @@ class Anafikir: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "toYorum" {
-            if let destination = segue.destination as? YorumlarVC{
+        if segue.identifier == "toYorumlar" {
+            if let destination = segue.destination as? Yorumlar{
                 if let secilenfikir = sender as? Fikir{
                     destination.secilenfikir = secilenfikir
                 }
@@ -133,6 +133,6 @@ extension Anafikir : UITableViewDelegate,UITableViewDataSource{
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "toYorum", sender: fikirler[indexPath.row])
+        performSegue(withIdentifier: "toYorumlar", sender: fikirler[indexPath.row])
     }
 }

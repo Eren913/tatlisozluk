@@ -17,6 +17,10 @@ let KullaniciAdi_REF = "KullanıcıAdı"
 let EklenmeTarihi_REF = "EklenmeTarihi"
 
 
-let USER_REF = "Users"
-let USERNAME_REF = "Kullaniciadi"
-let USERCREATETIME_REF = "Olusturma tarihi"
+let KULLANICILAR_REF = "Users"
+let KULLANICI_ADI_REF = "Kullaniciadi"
+let KULLANICI_OLUSTURMA_TARIHI = "Olusturma tarihi"
+
+let YORUMLAR_REF = "Yorumlar"
+let YORUM_TEXT = "YorumText"
+

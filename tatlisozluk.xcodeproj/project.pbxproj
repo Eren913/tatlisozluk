@@ -20,7 +20,7 @@
 		22AFACC4249FDF5E004C898B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22AFACC3249FDF5E004C898B /* GoogleService-Info.plist */; };
 		22C90FF624A24D7E0098C4F1 /* GirisVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C90FF524A24D7E0098C4F1 /* GirisVC.swift */; };
 		22C90FF824A24F740098C4F1 /* KayıtolmaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C90FF724A24F740098C4F1 /* KayıtolmaVC.swift */; };
-		22C90FFA24A272040098C4F1 /* YorumlarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C90FF924A272040098C4F1 /* YorumlarVC.swift */; };
+		22C90FFA24A272040098C4F1 /* Yorumlar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C90FF924A272040098C4F1 /* Yorumlar.swift */; };
 		22C90FFC24A275980098C4F1 /* YorumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C90FFB24A275980098C4F1 /* YorumCell.swift */; };
 		22C90FFE24A2770D0098C4F1 /* Yorum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C90FFD24A2770D0098C4F1 /* Yorum.swift */; };
 		22ED2043249FE5EC0004E91A /* FikirEkle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED2042249FE5EC0004E91A /* FikirEkle.swift */; };
@@ -43,7 +43,7 @@
 		22AFACC3249FDF5E004C898B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		22C90FF524A24D7E0098C4F1 /* GirisVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GirisVC.swift; sourceTree = "<group>"; };
 		22C90FF724A24F740098C4F1 /* KayıtolmaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KayıtolmaVC.swift"; sourceTree = "<group>"; };
-		22C90FF924A272040098C4F1 /* YorumlarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YorumlarVC.swift; sourceTree = "<group>"; };
+		22C90FF924A272040098C4F1 /* Yorumlar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yorumlar.swift; sourceTree = "<group>"; };
 		22C90FFB24A275980098C4F1 /* YorumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YorumCell.swift; sourceTree = "<group>"; };
 		22C90FFD24A2770D0098C4F1 /* Yorum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yorum.swift; sourceTree = "<group>"; };
 		22ED2042249FE5EC0004E91A /* FikirEkle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FikirEkle.swift; sourceTree = "<group>"; };
@@ -125,7 +125,7 @@
 				22ED2042249FE5EC0004E91A /* FikirEkle.swift */,
 				22C90FF524A24D7E0098C4F1 /* GirisVC.swift */,
 				22C90FF724A24F740098C4F1 /* KayıtolmaVC.swift */,
-				22C90FF924A272040098C4F1 /* YorumlarVC.swift */,
+				22C90FF924A272040098C4F1 /* Yorumlar.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -282,7 +282,7 @@
 				22AFACB4249FDF3F004C898B /* Anafikir.swift in Sources */,
 				22AFACB0249FDF3F004C898B /* AppDelegate.swift in Sources */,
 				22AFACB2249FDF3F004C898B /* SceneDelegate.swift in Sources */,
-				22C90FFA24A272040098C4F1 /* YorumlarVC.swift in Sources */,
+				22C90FFA24A272040098C4F1 /* Yorumlar.swift in Sources */,
 				22C90FFC24A275980098C4F1 /* YorumCell.swift in Sources */,
 				220E797124A0229D00E2BE2F /* FikirCell.swift in Sources */,
 			);

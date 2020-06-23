@@ -145,10 +145,10 @@
             </objects>
             <point key="canvasLocation" x="1071.2" y="132.68365817091455"/>
         </scene>
-        <!--YorumlarVC-->
+        <!--Yorumlar-->
         <scene sceneID="en3-k9-qbA">
             <objects>
-                <viewController id="Cjg-ug-KeY" customClass="YorumlarVC" customModule="tatlisozluk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Cjg-ug-KeY" customClass="Yorumlar" customModule="tatlisozluk" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jKW-0M-Lka" customClass="YorumalarVC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -162,7 +162,7 @@
                                             <constraint firstAttribute="width" constant="25" id="gI4-hj-hkS"/>
                                         </constraints>
                                         <connections>
-                                            <action selector="addbuttn:" destination="Cjg-ug-KeY" eventType="touchUpInside" id="YMz-nx-eKk"/>
+                                            <action selector="addbuttn:" destination="Cjg-ug-KeY" eventType="touchUpInside" id="cbd-Tp-tPq"/>
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="whm-mZ-h3p">
@@ -227,10 +227,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="lblKullaniciadi" destination="M9h-30-7ua" id="WKd-Nj-69L"/>
-                                            <outlet property="lblTarih" destination="Yr2-Te-4je" id="Nr4-MD-ypw"/>
-                                            <outlet property="lblkullanıcıadı" destination="M9h-30-7ua" id="u9r-Di-Zrw"/>
-                                            <outlet property="lbltarih" destination="Yr2-Te-4je" id="WBg-hD-HHB"/>
+                                            <outlet property="lblkullanıcıadı" destination="M9h-30-7ua" id="zkd-6J-XAs"/>
+                                            <outlet property="lbltarih" destination="Yr2-Te-4je" id="Eyw-br-Gzy"/>
                                             <outlet property="lblyorum" destination="xyW-rA-iuB" id="c09-A0-hga"/>
                                         </connections>
                                     </tableViewCell>
@@ -248,15 +246,11 @@
                             <constraint firstItem="VAZ-0V-C9E" firstAttribute="centerX" secondItem="jKW-0M-Lka" secondAttribute="centerX" id="pvg-R9-dp5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uE9-ft-vpR"/>
-                        <connections>
-                            <outlet property="tableView" destination="VAZ-0V-C9E" id="2YS-eF-6rP"/>
-                            <outlet property="txtField" destination="whm-mZ-h3p" id="7ZW-gg-KD5"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="kkQ-pA-aAk"/>
                     <connections>
-                        <outlet property="tableView" destination="VAZ-0V-C9E" id="fLG-ZB-X4Q"/>
-                        <outlet property="txtField" destination="whm-mZ-h3p" id="2GP-t7-ICq"/>
+                        <outlet property="tableView" destination="VAZ-0V-C9E" id="C1p-Qs-et7"/>
+                        <outlet property="txtField" destination="whm-mZ-h3p" id="Sod-6T-RNd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qCX-Cs-xZr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -527,6 +521,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uaR-Dt-sow">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

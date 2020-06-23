@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class Yorumlar: UIViewController {
 
@@ -16,18 +17,58 @@ class Yorumlar: UIViewController {
     var secilenfikir : Fikir!
     var yorumlar = [Yorum]()
     
-    
+    var fikirRef : DocumentReference!
+    let dbfireStore = Firestore.firestore()
+    var kullaniciAdi : String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
+        
+        fikirRef = dbfireStore.collection(Fikirler_REF).document(secilenfikir.documentId)
+        
+        if let adi = Auth.auth().currentUser?.displayName{
+            kullaniciAdi = adi
+        }
     }
     
 
     @IBAction func addbuttn(_ sender: UIButton) {
+        
+        guard let yorumText = txtField.text else {return}
+        
+        dbfireStore.runTransaction({ (transection, errorPointer) -> Any? in
+            
+            let secilenfikirKayıt : DocumentSnapshot
+            do {
+                try secilenfikirKayıt = transection.getDocument(self.dbfireStore.collection(Fikirler_REF).document(self.secilenfikir.documentId))
+            }catch let hata as NSError{
+                debugPrint("hh\(hata.localizedDescription)")
+                return nil
+            }
+            
+            guard let eskiYorumSayisi = (secilenfikirKayıt.data()?[YorumSayısı_REF] as? Int) else {return nil}
+            
+            transection.updateData([YorumSayısı_REF : eskiYorumSayisi+1], forDocument: self.fikirRef)
+            
+            let yeniYorumRef = self.dbfireStore.collection(Fikirler_REF).document(self.secilenfikir.documentId).collection(YORUMLAR_REF).document()
+            
+            transection.setData([
+                YORUM_TEXT : yorumText,
+                EklenmeTarihi_REF : FieldValue.serverTimestamp(),
+                KULLANICI_ADI_REF : self.kullaniciAdi ?? "null"
+            ], forDocument: yeniYorumRef)
+            
+            return nil
+        }) { (nesne, hata) in
+            if let hata = hata{
+                debugPrint("Hata Meydana Geldi TRAns \(hata.localizedDescription)")
+            }else{
+                self.txtField.text = ""
+            }
+        }
     }
-    
 }
 extension Yorumlar : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

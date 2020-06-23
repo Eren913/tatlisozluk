@@ -28,32 +28,34 @@ class Anafikir: UIViewController {
         fireStoreRef = Firestore.firestore().collection(Fikirler_REF)
         
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         setListener()
     }
     func setListener(){
-        fikirListener = fireStoreRef.whereField(Kategori_REF, isEqualTo: secilenKategori)
-        .addSnapshotListener { (snapshot, error) in
-        if let error = error{
-        debugPrint("Hata\(error.localizedDescription)")
-        }else{
-                           
-        guard let snap = snapshot else {return}
-        self.fikirler.removeAll()
-        for document in snap.documents {
-        let data = document.data()
-        let kullaniciadi = data[KullaniciAdi_REF] as? String ?? "Misafir"
-        let yorumsayisi = data[YorumSayısı_REF] as? Int ?? 0
-        let begenisayisi = data[Begenisayisi_REF] as? Int ?? 0
-        let fikirtext = data[FikirText_REF] as? String ?? "Fikir yok"
-        let eklenmetarihi = data[EklenmeTarihi_REF] as? Date ?? Date()
-        let documentid = document.documentID
-            
-        let yeniFikir = Fikir(kullaniciAdi: kullaniciadi, eklenmeTarihi: eklenmetarihi, fikirText: fikirtext, yorumSayisi: yorumsayisi, begeniSayisi: begenisayisi, documentId: documentid)
-            self.fikirler.append(yeniFikir)
+        
+        if secilenKategori == Kategoriler.Populer.rawValue{
+            fikirListener = fireStoreRef
+            .order(by: EklenmeTarihi_REF, descending: true)
+            .addSnapshotListener { (snapshot, error) in
+            if let error = error{
+            debugPrint("Hata\(error.localizedDescription)")
+            }else{
+                    self.fikirler.removeAll()
+                    self.fikirler = Fikir.populerfikirGetir(snapshot: snapshot)
+                    self.tableView.reloadData()
+                }
             }
+        }else{
+            fikirListener = fireStoreRef.whereField(Kategori_REF, isEqualTo: secilenKategori)
+            .order(by: EklenmeTarihi_REF, descending: true)
+            .addSnapshotListener { (snapshot, error) in
+            if let error = error{
+            debugPrint("Hata\(error.localizedDescription)")
+            }else{
+                self.fikirler.removeAll()
+                self.fikirler = Fikir.populerfikirGetir(snapshot: snapshot)
                 self.tableView.reloadData()
+                }
             }
         }
     }

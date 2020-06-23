@@ -17,7 +17,7 @@ class FikirEkle: UIViewController {
     @IBOutlet weak var txtPost: UITextView!
 
     var placeHolder = "Fikrinizi Belirtiniz"
-    var secilenKategori = "Eglence"
+    var secilenKategori = Kategoriler.Eglence.rawValue
     let db = Firestore.firestore()
     
     override func viewDidLoad() {

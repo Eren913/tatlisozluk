@@ -98,6 +98,9 @@ class Anafikir: UIViewController {
        
         do{
             try Auth.auth().signOut()
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let girisVC = storyboard.instantiateViewController(withIdentifier: "girisVC")
+            self.present(girisVC, animated: true, completion: nil)
             print("Çıkış işlemi Başarılı")
         }catch{
             print("Çıkış işlemi  Hatası")

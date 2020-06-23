@@ -28,11 +28,13 @@ class GirisVC: UIViewController {
            let password = txtparlo.text else{return}
         
         Auth.auth().signIn(withEmail: email, password: password) { (kullanici, error) in
-            
             if let error = error{
                 debugPrint(error.localizedDescription)
             }else{
-                self.dismiss(animated: true, completion: nil)
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let girisVC = storyboard.instantiateViewController(withIdentifier: "navq")
+                self.present(girisVC, animated: true, completion: nil)
+                //self.dismiss(animated: true, completion: nil)
             }
         }
         

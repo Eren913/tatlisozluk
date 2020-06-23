@@ -182,7 +182,7 @@
                                     <constraint firstItem="whm-mZ-h3p" firstAttribute="top" secondItem="s6H-gU-Bpg" secondAttribute="top" id="ufg-Hb-KNT"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VAZ-0V-C9E">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VAZ-0V-C9E">
                                 <rect key="frame" x="0.0" y="44" width="375" height="580"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
@@ -216,6 +216,7 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="xyW-rA-iuB" secondAttribute="bottom" constant="28.5" id="02o-ze-tOU"/>
                                                 <constraint firstItem="xyW-rA-iuB" firstAttribute="centerY" secondItem="Pso-i3-2zE" secondAttribute="centerY" id="6Qs-1P-Ep6"/>
                                                 <constraint firstItem="M9h-30-7ua" firstAttribute="leading" secondItem="xyW-rA-iuB" secondAttribute="leading" id="MbB-JH-KSm"/>
                                                 <constraint firstItem="Yr2-Te-4je" firstAttribute="leading" secondItem="M9h-30-7ua" secondAttribute="trailing" constant="12" id="Piz-sC-zfy"/>

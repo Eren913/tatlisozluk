@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import Firebase
 
 class Yorum {
     
@@ -19,5 +19,22 @@ class Yorum {
         self.kullanici_ADI = kullaniciadi
         self.yorum_TXT = yorum
         self.eklenme_Tarihi = eklenmetarihi
+    }
+    
+    class func yorumlarGetir(snapShot : QuerySnapshot?) ->[Yorum] {
+        
+        var yorumlar = [Yorum]()
+        guard let snap = snapShot else { return yorumlar}
+        for kayit in snap.documents {
+            let veri = kayit.data()
+            let kullaniciAdi = veri[KULLANICI_ADI_REF] as? String ?? "Misafir"
+            
+            let ts = veri[EklenmeTarihi_REF] as? Timestamp ?? Timestamp()
+            let eklenmeTarihi = ts.dateValue()
+            let yorumText = veri[YORUM_TEXT] as? String ?? "null yorum"
+            let yeniYorum = Yorum(kullaniciadi: kullaniciAdi, yorum: yorumText, eklenmetarihi: eklenmeTarihi)
+            yorumlar.append(yeniYorum)
+        }
+        return yorumlar
     }
 }

@@ -21,6 +21,8 @@ class Yorumlar: UIViewController {
     let dbfireStore = Firestore.firestore()
     var kullaniciAdi : String!
     
+    var yorumlarListener : ListenerRegistration!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -31,8 +33,24 @@ class Yorumlar: UIViewController {
         if let adi = Auth.auth().currentUser?.displayName{
             kullaniciAdi = adi
         }
+        self.view.klavyeyiAyarla()
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        yorumlarListener = dbfireStore.collection(Fikirler_REF).document(secilenfikir.documentId).collection(YORUMLAR_REF)
+            .order(by: EklenmeTarihi_REF, descending: false)
+            .addSnapshotListener({ (snapshot, error) in
+            
+            guard let snap = snapshot else {
+                debugPrint("Yorumları Getitirken Hata meydana geldi \(error?.localizedDescription)")
+                return }
+            
+            self.yorumlar.removeAll()
+            self.yorumlar = Yorum.yorumlarGetir(snapShot: snap)
+            self.tableView.reloadData()
+        })
+        
+    }
 
     @IBAction func addbuttn(_ sender: UIButton) {
         

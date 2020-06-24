@@ -40,7 +40,7 @@ class Yorum {
             let eklenmeTarihi = ts.dateValue()
             let yorumText = veri[YORUM_TEXT] as? String ?? "null yorum"
             let documentid = kayit.documentID
-            let kullaniciid = veri[KULLANICI_ID_REF] as? String ?? ""
+            let kullaniciid = veri[KULLANICI_ID] as? String ?? ""
             let yeniYorum = Yorum(kullaniciadi: kullaniciAdi, yorum: yorumText, eklenmetarihi: eklenmeTarihi,documentid: documentid,kullaniciID: kullaniciid)
             yorumlar.append(yeniYorum)
         }

@@ -25,6 +25,8 @@
 		22C90FFE24A2770D0098C4F1 /* Yorum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C90FFD24A2770D0098C4F1 /* Yorum.swift */; };
 		22C9100124A2BC910098C4F1 /* KeyBoardSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C9100024A2BC910098C4F1 /* KeyBoardSettings.swift */; };
 		22C9100324A3850D0098C4F1 /* YorumDuzenle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C9100224A3850D0098C4F1 /* YorumDuzenle.swift */; };
+		22C9100524A3B4BA0098C4F1 /* Begeni.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C9100424A3B4B90098C4F1 /* Begeni.swift */; };
+		22C9100724A3F7DB0098C4F1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C9100624A3F7DA0098C4F1 /* Extensions.swift */; };
 		22ED2043249FE5EC0004E91A /* FikirEkle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED2042249FE5EC0004E91A /* FikirEkle.swift */; };
 		5CAF465DF7D4BE2940676368 /* Pods_tatlisozluk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94222DB531967EDFC34D8F3F /* Pods_tatlisozluk.framework */; };
 /* End PBXBuildFile section */
@@ -50,6 +52,8 @@
 		22C90FFD24A2770D0098C4F1 /* Yorum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yorum.swift; sourceTree = "<group>"; };
 		22C9100024A2BC910098C4F1 /* KeyBoardSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBoardSettings.swift; sourceTree = "<group>"; };
 		22C9100224A3850D0098C4F1 /* YorumDuzenle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YorumDuzenle.swift; sourceTree = "<group>"; };
+		22C9100424A3B4B90098C4F1 /* Begeni.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Begeni.swift; sourceTree = "<group>"; };
+		22C9100624A3F7DA0098C4F1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		22ED2042249FE5EC0004E91A /* FikirEkle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FikirEkle.swift; sourceTree = "<group>"; };
 		7758DF2BC88981C398CCCE1A /* Pods-tatlisozluk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tatlisozluk.release.xcconfig"; path = "Target Support Files/Pods-tatlisozluk/Pods-tatlisozluk.release.xcconfig"; sourceTree = "<group>"; };
 		92F06D2CC11147BE594FCE74 /* Pods-tatlisozluk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tatlisozluk.debug.xcconfig"; path = "Target Support Files/Pods-tatlisozluk/Pods-tatlisozluk.debug.xcconfig"; sourceTree = "<group>"; };
@@ -102,8 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				22C90FFF24A2BC680098C4F1 /* Extras */,
-				22AFACAF249FDF3F004C898B /* AppDelegate.swift */,
 				22AFACB1249FDF3F004C898B /* SceneDelegate.swift */,
+				22AFACAF249FDF3F004C898B /* AppDelegate.swift */,
 				22ED203F249FE5920004E91A /* Model */,
 				22ED2041249FE5A20004E91A /* View */,
 				22ED2040249FE59B0004E91A /* Controller */,
@@ -116,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				22C9100024A2BC910098C4F1 /* KeyBoardSettings.swift */,
+				22C9100624A3F7DA0098C4F1 /* Extensions.swift */,
 			);
 			path = Extras;
 			sourceTree = "<group>";
@@ -127,6 +132,7 @@
 				2269F9F2249FF0FF00D73E64 /* Sabitler.swift */,
 				220E796E249FFB5F00E2BE2F /* Fikir.swift */,
 				22C90FFD24A2770D0098C4F1 /* Yorum.swift */,
+				22C9100424A3B4B90098C4F1 /* Begeni.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -287,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22C90FF624A24D7E0098C4F1 /* GirisVC.swift in Sources */,
+				22C9100524A3B4BA0098C4F1 /* Begeni.swift in Sources */,
 				22C90FFE24A2770D0098C4F1 /* Yorum.swift in Sources */,
 				22C9100324A3850D0098C4F1 /* YorumDuzenle.swift in Sources */,
 				22ED2043249FE5EC0004E91A /* FikirEkle.swift in Sources */,
@@ -299,6 +306,7 @@
 				22AFACB2249FDF3F004C898B /* SceneDelegate.swift in Sources */,
 				22C90FFA24A272040098C4F1 /* Yorumlar.swift in Sources */,
 				22C9100124A2BC910098C4F1 /* KeyBoardSettings.swift in Sources */,
+				22C9100724A3F7DB0098C4F1 /* Extensions.swift in Sources */,
 				22C90FFC24A275980098C4F1 /* YorumCell.swift in Sources */,
 				220E797124A0229D00E2BE2F /* FikirCell.swift in Sources */,
 			);

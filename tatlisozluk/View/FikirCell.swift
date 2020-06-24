@@ -21,6 +21,14 @@ class FikirCell: UITableViewCell {
     @IBOutlet weak var lblYorumsayisi: UILabel!
     
     @IBOutlet weak var imgSecenekler: UIImageView!
+    
+    
+    var delegate : FikirDelegate!
+    
+    
+    let fireStore = Firestore.firestore()
+    var begeniler = [Begeni]()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -28,14 +36,54 @@ class FikirCell: UITableViewCell {
               imgBegeni.addGestureRecognizer(tap)
               imgBegeni.isUserInteractionEnabled = true
     }
+    func begeniGetir(){
+        let begeniSorgu = fireStore.collection(Fikirler_REF).document(self.secilenFikir.documentId).collection(BEGENI_REF).whereField(KULLANICI_ID, isEqualTo: Auth.auth().currentUser?.uid ?? "begeniyok")
+        begeniSorgu.getDocuments { (snapshot, error) in
+            self.begeniler = Begeni.BegenileriGetir(snapshot: snapshot)
+            if self.begeniler.count > 0{
+                self.imgBegeni.image = UIImage(named: "yildizRenkli")
+            }else{
+                self.imgBegeni.image = UIImage(named: "yildizTransparan")
+            }
+        }
+    }
+    
+ 
     @objc func imgTapped(){
         
-        Firestore.firestore().collection(Fikirler_REF).document(secilenFikir.documentId).setData([Begenisayisi_REF : secilenFikir.begeniSayisi+1], merge: true)
         
-        //Firestore.firestore().document("Fikirler\(secilenFikir.documentId!)").updateData([Begenisayisi_REF : secilenFikir.begeniSayisi + 1] )
-        
+        fireStore.runTransaction({ (transection, errorPointer) -> Any? in
+            let secilenFikirKayit : DocumentSnapshot
+            
+            do{
+                try secilenFikirKayit = transection.getDocument(self.fireStore.collection(Fikirler_REF).document(self.secilenFikir.documentId))
+            }catch let error as NSError{
+                debugPrint("Begenide Hata oluştu...\(error.localizedDescription)")
+                return nil
+            }
+            
+            guard let eskisayi = (secilenFikirKayit.data()?[Begenisayisi_REF] as? Int) else {return nil}
+            let secilenFikirRef = self.fireStore.collection(Fikirler_REF).document(self.secilenFikir.documentId)
+            
+            if self.begeniler.count > 0 {
+                //Kullanıcı daha önceden beğenmiş ve beğeniden çıkmak üzere
+                transection.updateData([Begenisayisi_REF : eskisayi-1], forDocument: secilenFikirRef)
+                let eskibegeni = self.fireStore.collection(Fikirler_REF).document(self.secilenFikir.documentId).collection(BEGENI_REF).document(self.begeniler[0].documentId)
+                transection.deleteDocument(eskibegeni)
+            }else {
+                //kullanıcı daha önce beğenmemeiş ve beğenmek üzere
+                transection.updateData([Begenisayisi_REF : eskisayi+1], forDocument: secilenFikirRef)
+                let yeniBegeniRef = self.fireStore.collection(Fikirler_REF).document(self.secilenFikir.documentId).collection(BEGENI_REF).document()
+                transection.setData([KULLANICI_ID : Auth.auth().currentUser?.uid ?? "" ], forDocument : yeniBegeniRef)
+            }
+            return nil
+        }) { (nesne, error) in
+            if let error = error {
+                debugPrint("Begenme Fonksiyonunda hata meydana geldi \(error.localizedDescription)")
+            }
+        }
     }
-    func gorunumayarla(fikir : Fikir){
+    func gorunumayarla(fikir : Fikir,delegate : FikirDelegate){
         
         secilenFikir = fikir
         lblKullaniciadi.text = fikir.kullaniciAdi
@@ -48,6 +96,24 @@ class FikirCell: UITableViewCell {
         let eklenmetarihi = tarihFormat.string(from: fikir.eklenmeTarihi)
         lblTarih.text = eklenmetarihi
         
+        self.delegate = delegate
+        
+        imgSecenekler.isHidden = true
+        if fikir.kullaniciId == Auth.auth().currentUser?.uid{
+            imgSecenekler.isHidden = false
+            imgSecenekler.isUserInteractionEnabled = true
+            let tapo = UITapGestureRecognizer(target: self, action: #selector(imgFikirSelectedPressed))
+            imgSecenekler.addGestureRecognizer(tapo)
+        }
+        begeniGetir()
+        
+    }
+    @objc func imgFikirSelectedPressed(){
+        delegate.seceneklerPressed(fikir: secilenFikir)
     }
 
 }
+protocol FikirDelegate {
+    func seceneklerPressed(fikir : Fikir)
+}
+

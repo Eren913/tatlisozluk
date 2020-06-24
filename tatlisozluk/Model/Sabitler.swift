@@ -20,9 +20,12 @@ let EklenmeTarihi_REF = "EklenmeTarihi"
 let KULLANICILAR_REF = "Users"
 let KULLANICI_ADI_REF = "KullaniciAdi"
 let KULLANICI_OLUSTURMA_TARIHI = "Olusturma_tarihi"
-let KULLANICI_ID_REF = "Kullanici_id"
+let KULLANICI_ID = "Kullanici_id"
 
 
 let YORUMLAR_REF = "Yorumlar"
 let YORUM_TEXT = "YorumText"
+
+
+let BEGENI_REF = "Begenenkullanicilar"
 

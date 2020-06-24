@@ -76,7 +76,7 @@ class Yorumlar: UIViewController {
                 YORUM_TEXT : yorumText,
                 EklenmeTarihi_REF : FieldValue.serverTimestamp(),
                 KULLANICI_ADI_REF : self.kullaniciAdi ?? "nul data",
-                KULLANICI_ID_REF : Auth.auth().currentUser?.uid ?? "null"
+                KULLANICI_ID : Auth.auth().currentUser?.uid ?? "null"
             ], forDocument: yeniYorumRef)
             
             return nil

@@ -50,14 +50,14 @@ class Anafikir: UIViewController {
     func setListener(){
         
         if secilenKategori == Kategoriler.Populer.rawValue{
-            fikirListener = fireStoreRef
-            .order(by: EklenmeTarihi_REF, descending: true)
+        
+            fikirListener = fireStoreRef.yeniWhereSorgusu()
             .addSnapshotListener { (snapshot, error) in
             if let error = error{
             debugPrint("Hata\(error.localizedDescription)")
             }else{
                     self.fikirler.removeAll()
-                    self.fikirler = Fikir.populerfikirGetir(snapshot: snapshot)
+                    self.fikirler = Fikir.populerfikirGetir(snapshot: snapshot,begeniyegore: true)
                     self.tableView.reloadData()
                 }
             }
@@ -130,7 +130,7 @@ extension Anafikir : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "fikirCell",for: indexPath) as? FikirCell{
-        cell.gorunumayarla(fikir: fikirler[indexPath.row])
+            cell.gorunumayarla(fikir: fikirler[indexPath.row],delegate: self)
             return cell
         }else{
             return UITableViewCell()
@@ -140,3 +140,60 @@ extension Anafikir : UITableViewDelegate,UITableViewDataSource{
         performSegue(withIdentifier: "toYorumlar", sender: fikirler[indexPath.row])
     }
 }
+extension Anafikir : FikirDelegate{
+    func seceneklerPressed(fikir: Fikir) {
+         let alert = UIAlertController(title: "Yorumu Sil", message: "Yorumu silmek üzeresiniz", preferredStyle: .actionSheet)
+               let silAction = UIAlertAction(title: "Palaşımı Sİl", style: .default) { (action) in
+                
+                let begenilercolREF = Firestore.firestore().collection(Fikirler_REF).document(fikir.documentId).collection(BEGENI_REF)
+                let yorumlarCollRef = Firestore.firestore().collection(Fikirler_REF).document(fikir.documentId).collection(YORUMLAR_REF)
+                self.topluYorumSil(collectionRef: begenilercolREF) { (error) in
+                    
+                    if let hata = error{
+                        debugPrint("Veriler Silinirken Hata Meydana Geldi....\(hata)")
+                    }else{
+                        self.topluYorumSil(collectionRef: yorumlarCollRef) { (error) in
+                            
+                            if let error = error{
+                                debugPrint("Silinirken Hata Meydana Geldi \(error.localizedDescription)")
+                            }else{
+                                Firestore.firestore().collection(Fikirler_REF).document(fikir.documentId).delete { (error) in
+                                    if let error = error{
+                                        debugPrint("Silinirken Hata Meydana Geldi \(error.localizedDescription)")
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+        }
+        let iptalAction = UIAlertAction(title: "İptal", style: .cancel, handler: nil)
+        alert.addAction(silAction)
+        alert.addAction(iptalAction)
+        present(alert, animated: true, completion: nil)
+    }
+    func topluYorumSil(collectionRef  :CollectionReference , silinicekKayitSayisi : Int = 100,completion : @escaping (Error?) -> ()){
+        collectionRef.limit(to: silinicekKayitSayisi).getDocuments { (kayitsetleri, error) in
+            guard let kayitSetleri = kayitsetleri else {
+                completion(error)
+                return
+            }
+            guard kayitSetleri.count > 0 else{
+                completion(nil)
+                return
+            }
+            
+            let batch = collectionRef.firestore.batch()
+            kayitSetleri.documents.forEach { batch.deleteDocument($0.reference)}
+            batch.commit { (error) in
+                if let error = error{
+                    completion(error)
+                }else{
+                    self.topluYorumSil(collectionRef: collectionRef, silinicekKayitSayisi: silinicekKayitSayisi, completion: completion)
+                }
+            }
+            
+        }
+    }
+}
+

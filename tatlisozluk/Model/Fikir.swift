@@ -30,25 +30,33 @@ class Fikir{
         self.documentId = documentId
         self.kullaniciId = kullaniciId
     }
-    class func populerfikirGetir(snapshot : QuerySnapshot?) -> [Fikir]{
+    class func populerfikirGetir(snapshot : QuerySnapshot?,begeniyegore : Bool = false , yorumagore : Bool = false ) -> [Fikir]{
         var fikirler = [Fikir]()
     guard let snap = snapshot else {return fikirler}
     for document in snap.documents {
+        
     let data = document.data()
     let kullaniciadi = data[KullaniciAdi_REF] as? String ?? "Misafir"
+    let ts = data[EklenmeTarihi_REF] as? Timestamp ?? Timestamp()
+    let eklenmetarihi = ts.dateValue()
     let yorumsayisi = data[YorumSayısı_REF] as? Int ?? 0
     let begenisayisi = data[Begenisayisi_REF] as? Int ?? 0
     let fikirtext = data[FikirText_REF] as? String ?? "Fikir yok"
-    let kullaniciid = data[KULLANICI_ID_REF] as? String ?? ""
+    let kullaniciid = data[KULLANICI_ID] as? String ?? ""
         
         
-    let ts = data[EklenmeTarihi_REF] as? Timestamp ?? Timestamp()
-        let eklenmetarihi = ts.dateValue()
-    
+   
+        
     let documentid = document.documentID
         
     let yeniFikir = Fikir(kullaniciAdi: kullaniciadi, eklenmeTarihi: eklenmetarihi, fikirText: fikirtext, yorumSayisi: yorumsayisi, begeniSayisi: begenisayisi, documentId: documentid,kullaniciId: kullaniciid)
         fikirler.append(yeniFikir)
+        }
+        if begeniyegore {
+            fikirler.sort{ $0.begeniSayisi > $1.begeniSayisi }
+        }
+        if yorumagore {
+            fikirler.sort{ $0.yorumSayisi > $1.yorumSayisi}
         }
         return fikirler
 }

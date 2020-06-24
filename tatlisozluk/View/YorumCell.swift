@@ -38,6 +38,7 @@ class YorumCell: UITableViewCell {
         secilenyorum = yorum
         self.delegate = delegate
         
+        imgSecenekler.isHidden = true
         if yorum.kullaniciID == Auth.auth().currentUser?.uid{
             imgSecenekler.isHidden = false
             let tap = UITapGestureRecognizer(target: self, action: #selector(imgYorumSeceneklerPressed))

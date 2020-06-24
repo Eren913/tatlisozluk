@@ -41,7 +41,7 @@ class FikirEkle: UIViewController {
     
     @IBAction func btnPaylas(_ sender: Any) {
         
-        guard txtkullanıcıAdı.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty != true else { return}
+        guard txtPost.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty != true else { return}
         
         db.collection(Fikirler_REF).addDocument(data: [
             Kategori_REF : secilenKategori,
@@ -50,7 +50,7 @@ class FikirEkle: UIViewController {
             FikirText_REF: txtPost.text!,
             EklenmeTarihi_REF : FieldValue.serverTimestamp(),
             KullaniciAdi_REF : kullanıcıUSER,
-            KULLANICI_ID_REF : Auth.auth().currentUser?.uid ?? ""
+            KULLANICI_ID : Auth.auth().currentUser?.uid ?? ""
         ]){ error in
             if let error = error {
                 print("print error\(error)")

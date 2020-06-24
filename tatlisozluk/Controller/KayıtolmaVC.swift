@@ -34,7 +34,7 @@ class kayitVC: UIViewController {
                 print("Kullanıcı oluşturulurken hata meydana geldi\(error.localizedDescription)")
             }
 
-            /* Kullanıcı bilgilerini güncelleme istek metodu
+            
             let changeRequest = users?.user.createProfileChangeRequest()
             changeRequest?.displayName = username
             changeRequest?.commitChanges(completion: { (error) in
@@ -42,7 +42,6 @@ class kayitVC: UIViewController {
                     print("Kullanıcı bilgileri güncellenirken hata meydana geldi \(error.localizedDescription)")
                 }
             })
-           */
             
             guard let userid = users?.user.uid else {return}
             Firestore.firestore().collection(KULLANICILAR_REF).document(userid).setData([

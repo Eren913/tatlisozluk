@@ -83,6 +83,12 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="daireRenkli" translatesAutoresizingMaskIntoConstraints="NO" id="d7P-8o-j8W">
+                                                    <rect key="frame" x="305" y="11" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="fKe-N5-d9s"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="9LZ-4I-Eub" firstAttribute="top" secondItem="YYm-hT-8YY" secondAttribute="topMargin" id="0aj-Yy-a0f"/>
@@ -90,16 +96,21 @@
                                                 <constraint firstItem="Vf1-TO-MmA" firstAttribute="top" secondItem="AGF-vE-Pfp" secondAttribute="bottom" constant="11" id="Oxg-up-zGj"/>
                                                 <constraint firstItem="9LZ-4I-Eub" firstAttribute="leading" secondItem="YYm-hT-8YY" secondAttribute="leadingMargin" id="Pv2-cp-EVA"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="Vf1-TO-MmA" secondAttribute="bottom" constant="-2.5" id="YpB-Xj-DKa"/>
+                                                <constraint firstItem="d7P-8o-j8W" firstAttribute="centerY" secondItem="b6U-Z7-ycK" secondAttribute="centerY" constant="4.75" id="ZLj-Bd-0E0"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="d7P-8o-j8W" secondAttribute="trailing" constant="25" id="ahf-Je-d5O"/>
                                                 <constraint firstItem="AGF-vE-Pfp" firstAttribute="leading" secondItem="Vf1-TO-MmA" secondAttribute="leading" id="ejT-AF-5pk"/>
                                                 <constraint firstItem="9LZ-4I-Eub" firstAttribute="leading" secondItem="AGF-vE-Pfp" secondAttribute="leading" id="jFk-lT-zn8"/>
                                                 <constraint firstItem="AGF-vE-Pfp" firstAttribute="top" secondItem="9LZ-4I-Eub" secondAttribute="bottom" constant="8" id="mnG-Ez-L7O"/>
                                                 <constraint firstItem="b6U-Z7-ycK" firstAttribute="baseline" secondItem="9LZ-4I-Eub" secondAttribute="firstBaseline" id="moR-R5-fti"/>
                                                 <constraint firstItem="9LZ-4I-Eub" firstAttribute="baseline" secondItem="b6U-Z7-ycK" secondAttribute="baseline" id="mtL-Df-bu5"/>
+                                                <constraint firstItem="d7P-8o-j8W" firstAttribute="top" secondItem="b6U-Z7-ycK" secondAttribute="top" id="uea-lN-DBx"/>
                                                 <constraint firstItem="b6U-Z7-ycK" firstAttribute="leading" secondItem="9LZ-4I-Eub" secondAttribute="trailing" constant="12" id="wxV-wa-o9t"/>
+                                                <constraint firstItem="d7P-8o-j8W" firstAttribute="centerY" secondItem="b6U-Z7-ycK" secondAttribute="centerY" constant="4.75" id="ya3-R8-7kj"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="imgBegeni" destination="X4W-df-mna" id="0Pi-b1-VF5"/>
+                                            <outlet property="imgSecenekler" destination="d7P-8o-j8W" id="e2R-rh-P30"/>
                                             <outlet property="lblBegeni" destination="1uX-zK-L97" id="O08-DE-JiG"/>
                                             <outlet property="lblKullaniciadi" destination="9LZ-4I-Eub" id="xKN-Ba-bKR"/>
                                             <outlet property="lblTarih" destination="b6U-Z7-ycK" id="lV1-nP-hK0"/>
@@ -214,20 +225,30 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="daireRenkli" translatesAutoresizingMaskIntoConstraints="NO" id="fYI-D1-aAz">
+                                                    <rect key="frame" x="330" y="11" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="THZ-31-fzA"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="xyW-rA-iuB" secondAttribute="bottom" constant="28.5" id="02o-ze-tOU"/>
                                                 <constraint firstItem="xyW-rA-iuB" firstAttribute="centerY" secondItem="Pso-i3-2zE" secondAttribute="centerY" id="6Qs-1P-Ep6"/>
+                                                <constraint firstItem="fYI-D1-aAz" firstAttribute="top" secondItem="Yr2-Te-4je" secondAttribute="top" id="H4x-if-Vq5"/>
                                                 <constraint firstItem="M9h-30-7ua" firstAttribute="leading" secondItem="xyW-rA-iuB" secondAttribute="leading" id="MbB-JH-KSm"/>
                                                 <constraint firstItem="Yr2-Te-4je" firstAttribute="leading" secondItem="M9h-30-7ua" secondAttribute="trailing" constant="12" id="Piz-sC-zfy"/>
                                                 <constraint firstItem="xyW-rA-iuB" firstAttribute="top" secondItem="M9h-30-7ua" secondAttribute="bottom" constant="8" id="RJG-Du-J0x"/>
                                                 <constraint firstItem="M9h-30-7ua" firstAttribute="baseline" secondItem="Yr2-Te-4je" secondAttribute="baseline" id="RMY-zt-Lz7"/>
+                                                <constraint firstItem="fYI-D1-aAz" firstAttribute="trailing" secondItem="xyW-rA-iuB" secondAttribute="trailing" id="ZUT-I6-bLB"/>
                                                 <constraint firstItem="Yr2-Te-4je" firstAttribute="baseline" secondItem="M9h-30-7ua" secondAttribute="firstBaseline" id="ebH-0w-tfg"/>
+                                                <constraint firstItem="fYI-D1-aAz" firstAttribute="centerY" secondItem="Yr2-Te-4je" secondAttribute="centerY" constant="4.75" id="inc-hc-Iqg"/>
                                                 <constraint firstItem="M9h-30-7ua" firstAttribute="top" secondItem="Pso-i3-2zE" secondAttribute="topMargin" id="qU4-JR-gOl"/>
                                                 <constraint firstItem="M9h-30-7ua" firstAttribute="leading" secondItem="Pso-i3-2zE" secondAttribute="leadingMargin" id="rAn-ss-wzv"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="imgSecenekler" destination="fYI-D1-aAz" id="T5w-K7-jxl"/>
                                             <outlet property="lblkullanıcıadı" destination="M9h-30-7ua" id="zkd-6J-XAs"/>
                                             <outlet property="lbltarih" destination="Yr2-Te-4je" id="Eyw-br-Gzy"/>
                                             <outlet property="lblyorum" destination="xyW-rA-iuB" id="c09-A0-hga"/>
@@ -539,6 +560,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="daireRenkli" width="30" height="30"/>
         <image name="postEkle" width="21" height="24"/>
         <image name="yildizRenkli" width="20" height="19"/>
         <image name="yorum" width="26" height="22"/>

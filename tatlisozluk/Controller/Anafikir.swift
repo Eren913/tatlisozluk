@@ -20,6 +20,8 @@ class Anafikir: UIViewController {
     private var fikirListener : ListenerRegistration!
     private var listenerHandle : AuthStateDidChangeListenerHandle?
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -28,6 +30,15 @@ class Anafikir: UIViewController {
         
         fireStoreRef = Firestore.firestore().collection(Fikirler_REF)
         
+        
+        let user = Auth.auth().currentUser
+        if let user = user {
+          let uid = user.uid
+          let email = user.email
+          let photoURL = user.photoURL
+          let ee = user.displayName
+        print("qq\(uid) \(email) \(photoURL)  \(ee)")
+        }
     }
     override func viewWillDisappear(_ animated: Bool) {
         if fikirListener != nil{

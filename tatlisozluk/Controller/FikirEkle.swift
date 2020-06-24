@@ -40,7 +40,8 @@ class FikirEkle: UIViewController {
             YorumSayısı_REF : 0,
             FikirText_REF: txtPost.text!,
             EklenmeTarihi_REF : FieldValue.serverTimestamp(),
-            KullaniciAdi_REF : kullaniciadi
+            KullaniciAdi_REF : kullaniciadi,
+            KULLANICI_ID_REF : Auth.auth().currentUser?.uid ?? ""
         ]){ error in
             if let error = error {
                 print("print error\(error)")

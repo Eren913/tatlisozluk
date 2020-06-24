@@ -20,6 +20,7 @@ class FikirCell: UITableViewCell {
     @IBOutlet weak var lblTarih: UILabel!
     @IBOutlet weak var lblYorumsayisi: UILabel!
     
+    @IBOutlet weak var imgSecenekler: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         

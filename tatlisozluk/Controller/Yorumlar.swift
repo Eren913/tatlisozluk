@@ -42,7 +42,7 @@ class Yorumlar: UIViewController {
             .addSnapshotListener({ (snapshot, error) in
             
             guard let snap = snapshot else {
-                debugPrint("Yorumları Getitirken Hata meydana geldi \(error?.localizedDescription)")
+                debugPrint("Yorumları Getitirken Hata meydana geldi \(error?.localizedDescription ?? "")")
                 return }
             
             self.yorumlar.removeAll()
@@ -75,7 +75,8 @@ class Yorumlar: UIViewController {
             transection.setData([
                 YORUM_TEXT : yorumText,
                 EklenmeTarihi_REF : FieldValue.serverTimestamp(),
-                KULLANICI_ADI_REF : self.kullaniciAdi ?? "null"
+                KULLANICI_ADI_REF : self.kullaniciAdi ?? "nul data",
+                KULLANICI_ID_REF : Auth.auth().currentUser?.uid ?? "null"
             ], forDocument: yeniYorumRef)
             
             return nil

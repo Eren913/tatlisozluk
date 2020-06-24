@@ -20,6 +20,8 @@ let EklenmeTarihi_REF = "EklenmeTarihi"
 let KULLANICILAR_REF = "Users"
 let KULLANICI_ADI_REF = "Kullaniciadi"
 let KULLANICI_OLUSTURMA_TARIHI = "Olusturma tarihi"
+let KULLANICI_ID_REF = "Kullanıcı id"
+
 
 let YORUMLAR_REF = "Yorumlar"
 let YORUM_TEXT = "YorumText"

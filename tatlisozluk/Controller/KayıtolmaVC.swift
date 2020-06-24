@@ -33,7 +33,7 @@ class kayitVC: UIViewController {
             if let error = error{
                 print("Kullanıcı oluşturulurken hata meydana geldi\(error.localizedDescription)")
             }
-            
+
             /* Kullanıcı bilgilerini güncelleme istek metodu
             let changeRequest = users?.user.createProfileChangeRequest()
             changeRequest?.displayName = username

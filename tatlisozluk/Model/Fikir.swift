@@ -17,9 +17,10 @@ class Fikir{
     private(set) var yorumSayisi : Int!
     private(set) var begeniSayisi : Int!
     private(set) var documentId : String!
+    private(set) var kullaniciId : String!
     
     
-    init(kullaniciAdi : String,eklenmeTarihi : Date, fikirText : String, yorumSayisi : Int,begeniSayisi : Int,documentId : String){
+    init(kullaniciAdi : String,eklenmeTarihi : Date, fikirText : String, yorumSayisi : Int,begeniSayisi : Int,documentId : String,kullaniciId : String){
         
         self.kullaniciAdi = kullaniciAdi
         self.eklenmeTarihi = eklenmeTarihi
@@ -27,6 +28,7 @@ class Fikir{
         self.yorumSayisi = yorumSayisi
         self.begeniSayisi = begeniSayisi
         self.documentId = documentId
+        self.kullaniciId = kullaniciId
     }
     class func populerfikirGetir(snapshot : QuerySnapshot?) -> [Fikir]{
         var fikirler = [Fikir]()
@@ -37,6 +39,7 @@ class Fikir{
     let yorumsayisi = data[YorumSayısı_REF] as? Int ?? 0
     let begenisayisi = data[Begenisayisi_REF] as? Int ?? 0
     let fikirtext = data[FikirText_REF] as? String ?? "Fikir yok"
+    let kullaniciid = data[KULLANICI_ID_REF] as? String ?? ""
         
         
     let ts = data[EklenmeTarihi_REF] as? Timestamp ?? Timestamp()
@@ -44,7 +47,7 @@ class Fikir{
     
     let documentid = document.documentID
         
-    let yeniFikir = Fikir(kullaniciAdi: kullaniciadi, eklenmeTarihi: eklenmetarihi, fikirText: fikirtext, yorumSayisi: yorumsayisi, begeniSayisi: begenisayisi, documentId: documentid)
+    let yeniFikir = Fikir(kullaniciAdi: kullaniciadi, eklenmeTarihi: eklenmetarihi, fikirText: fikirtext, yorumSayisi: yorumsayisi, begeniSayisi: begenisayisi, documentId: documentid,kullaniciId: kullaniciid)
         fikirler.append(yeniFikir)
         }
         return fikirler

@@ -24,6 +24,7 @@
 		22C90FFC24A275980098C4F1 /* YorumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C90FFB24A275980098C4F1 /* YorumCell.swift */; };
 		22C90FFE24A2770D0098C4F1 /* Yorum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C90FFD24A2770D0098C4F1 /* Yorum.swift */; };
 		22C9100124A2BC910098C4F1 /* KeyBoardSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C9100024A2BC910098C4F1 /* KeyBoardSettings.swift */; };
+		22C9100324A3850D0098C4F1 /* YorumDuzenle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C9100224A3850D0098C4F1 /* YorumDuzenle.swift */; };
 		22ED2043249FE5EC0004E91A /* FikirEkle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED2042249FE5EC0004E91A /* FikirEkle.swift */; };
 		5CAF465DF7D4BE2940676368 /* Pods_tatlisozluk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94222DB531967EDFC34D8F3F /* Pods_tatlisozluk.framework */; };
 /* End PBXBuildFile section */
@@ -48,6 +49,7 @@
 		22C90FFB24A275980098C4F1 /* YorumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YorumCell.swift; sourceTree = "<group>"; };
 		22C90FFD24A2770D0098C4F1 /* Yorum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yorum.swift; sourceTree = "<group>"; };
 		22C9100024A2BC910098C4F1 /* KeyBoardSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBoardSettings.swift; sourceTree = "<group>"; };
+		22C9100224A3850D0098C4F1 /* YorumDuzenle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YorumDuzenle.swift; sourceTree = "<group>"; };
 		22ED2042249FE5EC0004E91A /* FikirEkle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FikirEkle.swift; sourceTree = "<group>"; };
 		7758DF2BC88981C398CCCE1A /* Pods-tatlisozluk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tatlisozluk.release.xcconfig"; path = "Target Support Files/Pods-tatlisozluk/Pods-tatlisozluk.release.xcconfig"; sourceTree = "<group>"; };
 		92F06D2CC11147BE594FCE74 /* Pods-tatlisozluk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tatlisozluk.debug.xcconfig"; path = "Target Support Files/Pods-tatlisozluk/Pods-tatlisozluk.debug.xcconfig"; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				22C90FF524A24D7E0098C4F1 /* GirisVC.swift */,
 				22C90FF724A24F740098C4F1 /* KayıtolmaVC.swift */,
 				22C90FF924A272040098C4F1 /* Yorumlar.swift */,
+				22C9100224A3850D0098C4F1 /* YorumDuzenle.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 			files = (
 				22C90FF624A24D7E0098C4F1 /* GirisVC.swift in Sources */,
 				22C90FFE24A2770D0098C4F1 /* Yorum.swift in Sources */,
+				22C9100324A3850D0098C4F1 /* YorumDuzenle.swift in Sources */,
 				22ED2043249FE5EC0004E91A /* FikirEkle.swift in Sources */,
 				22C90FF824A24F740098C4F1 /* KayıtolmaVC.swift in Sources */,
 				2269F9F3249FF0FF00D73E64 /* Sabitler.swift in Sources */,

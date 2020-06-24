@@ -54,7 +54,7 @@ class Yorumlar: UIViewController {
 
     @IBAction func addbuttn(_ sender: UIButton) {
         
-        guard let yorumText = txtField.text else {return}
+        guard let yorumText = txtField.text,txtField.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty != true else {return}
         
         dbfireStore.runTransaction({ (transection, errorPointer) -> Any? in
             
@@ -97,9 +97,69 @@ extension Yorumlar : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "yorumCell", for: indexPath) as? YorumCell{
-            cell.gorunumAyarla(yorum: yorumlar[indexPath.row])
+            cell.gorunumAyarla(yorum: yorumlar[indexPath.row], delegate: self)
             return cell
         }
         return UITableViewCell()
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "yorumDuzenleSegue"{
+            if let destination = segue.destination as? YorumDuzenle{
+                if let yorumVerisi = sender as? (secilenYorum : Yorum , secilenFikir : Fikir){
+                    destination.yorumDuzenle = yorumVerisi
+                }
+            }
+        }
+    }
+}
+extension Yorumlar : YorumDelegate{
+    func seceneklerYorumPressed(yorum : Yorum){
+        
+        let alert  = UIAlertController(title: "Yorumu Düzenle", message: "Yorumu düzenle veya sil", preferredStyle: .actionSheet)
+        
+        let silAction = UIAlertAction(title: "Yorumu sil", style: .default) { (action) in
+            
+            self.dbfireStore.runTransaction({ (transsection, error) -> Any? in
+                
+                let secilenfikirKayıt : DocumentSnapshot
+                do {
+                    try secilenfikirKayıt = transsection.getDocument(self.dbfireStore.collection(Fikirler_REF).document(self.secilenfikir.documentId))
+                }catch let hata as NSError{
+                    debugPrint("hh\(hata.localizedDescription)")
+                    return nil
+                }
+                
+                guard let oldcomment = (secilenfikirKayıt.data()?[YorumSayısı_REF] as? Int) else {return nil}
+                
+                transsection.updateData([YorumSayısı_REF : oldcomment-1 ], forDocument: self.fikirRef)
+                
+                let silinicekYorumREF = self.dbfireStore.collection(Fikirler_REF).document(self.secilenfikir.documentId).collection(YORUMLAR_REF).document(yorum.documentid)
+                transsection.deleteDocument(silinicekYorumREF)
+                  return nil
+            }) { (nesne, error) in
+                if let error = error {
+                    debugPrint("Yorum Silinirken Hata Meydana  Geldi \(error.localizedDescription)")
+                }else{
+                    alert.dismiss(animated: true, completion: nil)
+                }
+              
+            }
+            
+        }
+        
+        let düzenleAction = UIAlertAction(title: "Yorumu düzenle", style: .default) { (action) in
+            self.performSegue(withIdentifier: "yorumDuzenleSegue", sender: (yorum,self.secilenfikir))
+            self.dismiss(animated: true, completion: nil)
+        }
+        let iptalAction = UIAlertAction(title: "İptal ET", style: .cancel) { (action) in
+            //iptal
+        }
+        alert.addAction(silAction)
+        alert.addAction(düzenleAction)
+        alert.addAction(iptalAction)
+        present(alert, animated: true, completion: nil)
+        
+        
     }
 }

@@ -20,6 +20,8 @@ class FikirEkle: UIViewController {
     var secilenKategori = Kategoriler.Eglence.rawValue
     let db = Firestore.firestore()
     
+    
+    var kullanıcıUSER : String = "Misafir"
     override func viewDidLoad() {
         super.viewDidLoad()
         buttonPaylas.layer.cornerRadius = 10
@@ -28,11 +30,18 @@ class FikirEkle: UIViewController {
         txtPost.delegate = self
         txtPost.text = placeHolder
         txtPost.textColor = .lightGray
+        
+        txtkullanıcıAdı.isEnabled = false
+        
+        if let adi = Auth.auth().currentUser?.displayName{
+            kullanıcıUSER = adi
+            txtkullanıcıAdı.text = kullanıcıUSER
+        }
     }
     
     @IBAction func btnPaylas(_ sender: Any) {
         
-        guard let kullaniciadi = txtkullanıcıAdı.text else { return}
+        guard txtkullanıcıAdı.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty != true else { return}
         
         db.collection(Fikirler_REF).addDocument(data: [
             Kategori_REF : secilenKategori,
@@ -40,7 +49,7 @@ class FikirEkle: UIViewController {
             YorumSayısı_REF : 0,
             FikirText_REF: txtPost.text!,
             EklenmeTarihi_REF : FieldValue.serverTimestamp(),
-            KullaniciAdi_REF : kullaniciadi,
+            KullaniciAdi_REF : kullanıcıUSER,
             KULLANICI_ID_REF : Auth.auth().currentUser?.uid ?? ""
         ]){ error in
             if let error = error {

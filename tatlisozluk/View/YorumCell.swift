@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class YorumCell: UITableViewCell {
 
@@ -18,9 +19,13 @@ class YorumCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        
+        
     }
+    var delegate : YorumDelegate?
+    var secilenyorum : Yorum!
     
-    func gorunumAyarla(yorum : Yorum){
+    func gorunumAyarla(yorum : Yorum,delegate : YorumDelegate?){
         
         lblkullanıcıadı.text = yorum.kullanici_ADI
         lblyorum.text = yorum.yorum_TXT
@@ -29,6 +34,23 @@ class YorumCell: UITableViewCell {
         tarihFormat.dateFormat = "dd MM YYYY hh:dd"
         let eklenmeTarihi = tarihFormat.string(from: yorum.eklenme_Tarihi)
         lbltarih.text = eklenmeTarihi
+        
+        secilenyorum = yorum
+        self.delegate = delegate
+        
+        if yorum.kullaniciID == Auth.auth().currentUser?.uid{
+            imgSecenekler.isHidden = false
+            let tap = UITapGestureRecognizer(target: self, action: #selector(imgYorumSeceneklerPressed))
+            imgSecenekler.isUserInteractionEnabled = true
+            imgSecenekler.addGestureRecognizer(tap)
+        }
+    }
+    @objc func imgYorumSeceneklerPressed(){
+        delegate?.seceneklerYorumPressed(yorum: secilenyorum)
     }
 
+}
+
+protocol YorumDelegate{
+    func seceneklerYorumPressed(yorum : Yorum)
 }

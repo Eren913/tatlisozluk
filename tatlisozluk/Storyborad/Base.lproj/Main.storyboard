@@ -273,6 +273,7 @@
                     <connections>
                         <outlet property="tableView" destination="VAZ-0V-C9E" id="C1p-Qs-et7"/>
                         <outlet property="txtField" destination="whm-mZ-h3p" id="Sod-6T-RNd"/>
+                        <segue destination="2J1-0J-e5s" kind="show" identifier="yorumDuzenleSegue" id="old-Mn-O56"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qCX-Cs-xZr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -363,11 +364,68 @@
             </objects>
             <point key="canvasLocation" x="1892" y="-161"/>
         </scene>
+        <!--Yorum Duzenle-->
+        <scene sceneID="L2d-VO-VcF">
+            <objects>
+                <viewController id="2J1-0J-e5s" customClass="YorumDuzenle" customModule="tatlisozluk" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="s4y-oG-DSW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oix-I2-eCG">
+                                <rect key="frame" x="121" y="300" width="133" height="30"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="98s-BE-i4J"/>
+                                    <constraint firstAttribute="width" constant="133" id="M8v-rK-yds"/>
+                                </constraints>
+                                <state key="normal" title="Güncelle">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnGuncellePressed:" destination="2J1-0J-e5s" eventType="touchUpInside" id="0Sg-ED-q1i"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iWM-v0-zMw">
+                                <rect key="frame" x="16" y="20" width="343" height="260"/>
+                                <color key="backgroundColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="0.47388698630136988" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="343" id="MXT-A9-svc"/>
+                                    <constraint firstAttribute="height" constant="260" id="WeE-sA-VFA"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="iWM-v0-zMw" firstAttribute="leading" secondItem="s4y-oG-DSW" secondAttribute="leadingMargin" id="87A-qa-jYr"/>
+                            <constraint firstItem="iWM-v0-zMw" firstAttribute="centerX" secondItem="Oix-I2-eCG" secondAttribute="centerX" id="FXu-ZJ-veF"/>
+                            <constraint firstItem="iWM-v0-zMw" firstAttribute="top" secondItem="yrP-YH-tLb" secondAttribute="top" constant="20" id="SKl-v1-m67"/>
+                            <constraint firstItem="iWM-v0-zMw" firstAttribute="trailing" secondItem="s4y-oG-DSW" secondAttribute="trailingMargin" id="XQv-JE-m1R"/>
+                            <constraint firstItem="Oix-I2-eCG" firstAttribute="top" secondItem="iWM-v0-zMw" secondAttribute="bottom" constant="20" id="eK0-3I-y6j"/>
+                            <constraint firstItem="yrP-YH-tLb" firstAttribute="bottom" secondItem="Oix-I2-eCG" secondAttribute="bottom" constant="337" id="pZm-hr-oKT"/>
+                            <constraint firstItem="Oix-I2-eCG" firstAttribute="leading" secondItem="yrP-YH-tLb" secondAttribute="leading" constant="121" id="v87-cJ-NMI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="yrP-YH-tLb"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Osf-sO-YLb"/>
+                    <connections>
+                        <outlet property="btnGuncelle" destination="Oix-I2-eCG" id="dQj-iQ-87s"/>
+                        <outlet property="txtYorum" destination="iWM-v0-zMw" id="Qkk-DH-c5u"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WCM-XV-o3m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2840.8000000000002" y="30.134932533733135"/>
+        </scene>
         <!--GirisVC-->
         <scene sceneID="SAw-9G-18t">
             <objects>
                 <viewController storyboardIdentifier="girisVC" id="aun-Hf-rOz" customClass="GirisVC" customModule="tatlisozluk" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="Dka-la-ZCC">
+                    <view key="view" contentMode="scaleToFill" id="Dka-la-ZCC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>

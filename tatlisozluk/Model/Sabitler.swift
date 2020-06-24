@@ -13,14 +13,14 @@ let Kategori_REF = "Kategori"
 let YorumSayısı_REF = "YorumSayısı"
 let Begenisayisi_REF = "BegeniSayısı"
 let FikirText_REF = "FikirText"
-let KullaniciAdi_REF = "KullanıcıAdı"
+let KullaniciAdi_REF = "KullaniciAdi"
 let EklenmeTarihi_REF = "EklenmeTarihi"
 
 
 let KULLANICILAR_REF = "Users"
-let KULLANICI_ADI_REF = "Kullaniciadi"
-let KULLANICI_OLUSTURMA_TARIHI = "Olusturma tarihi"
-let KULLANICI_ID_REF = "Kullanıcı id"
+let KULLANICI_ADI_REF = "KullaniciAdi"
+let KULLANICI_OLUSTURMA_TARIHI = "Olusturma_tarihi"
+let KULLANICI_ID_REF = "Kullanici_id"
 
 
 let YORUMLAR_REF = "Yorumlar"
